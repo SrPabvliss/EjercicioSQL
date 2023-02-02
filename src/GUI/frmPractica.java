@@ -62,6 +62,13 @@ public class frmPractica extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         btnConN = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        btnConP = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        btnConQ = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        btnConR = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        btnConS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -243,6 +250,47 @@ public class frmPractica extends javax.swing.JFrame {
         jLabel15.setText("P");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 100, -1));
 
+        btnConP.setText("Consultar P");
+        btnConP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConP, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 100, -1));
+
+        jLabel16.setText("Q");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 110, -1));
+
+        btnConQ.setText("Consultar Q");
+        btnConQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConQActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 110, -1));
+
+        jLabel17.setText("R");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 90, -1));
+
+        btnConR.setText("ConsultarR");
+        btnConR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConRActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 90, -1));
+
+        jLabel18.setText("S");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 100, -1));
+
+        btnConS.setText("ConsultarS");
+        btnConS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConSActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConS, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 100, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -312,6 +360,22 @@ public class frmPractica extends javax.swing.JFrame {
         con.obtenerFilas("nombre", lstProductos, "producto", "NOT precio", ">=", 400);
     }//GEN-LAST:event_btnConOActionPerformed
 
+    private void btnConPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConPActionPerformed
+        con.obtenerFilas("*", lstProductos, "producto", "precio", 80, 300);
+    }//GEN-LAST:event_btnConPActionPerformed
+
+    private void btnConQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConQActionPerformed
+        con.obtenerFilas("*", lstProductos, "producto", "precio",60 , 200);
+    }//GEN-LAST:event_btnConQActionPerformed
+
+    private void btnConRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConRActionPerformed
+        con.obtenerFilas("*", lstProductos, "producto", "precio", ">", 200, "id_fabricante", "=", 6);
+    }//GEN-LAST:event_btnConRActionPerformed
+
+    private void btnConSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConSActionPerformed
+        con.obtenerFilas("*", lstProductos, "producto", "id_fabricante", "=", 1, 3, 5);
+    }//GEN-LAST:event_btnConSActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -359,6 +423,10 @@ public class frmPractica extends javax.swing.JFrame {
     private javax.swing.JButton btnConM;
     private javax.swing.JButton btnConN;
     private javax.swing.JButton btnConO;
+    private javax.swing.JButton btnConP;
+    private javax.swing.JButton btnConQ;
+    private javax.swing.JButton btnConR;
+    private javax.swing.JButton btnConS;
     private javax.swing.JButton btnConectar;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btni1;
@@ -371,6 +439,9 @@ public class frmPractica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

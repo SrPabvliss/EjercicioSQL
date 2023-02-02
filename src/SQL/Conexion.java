@@ -221,7 +221,7 @@ public class Conexion {
             System.out.println("Error = " + ex);
         }
     }
-    
+
     //Este metodo existe para cuando se requiere ordenar y obtener una cantidad especifica de filas o registros
     public void ordenar(String p, String q, JList lista, String tabla, String orden, int limite) {
         //p selecciona los campos que se quiere obtener y q segun el dato que se quiere ordenar
@@ -230,11 +230,11 @@ public class Conexion {
 
         try {
             Statement leer = cx.createStatement();
-            rs = leer.executeQuery("SELECT " + p + " FROM " + tabla + " order by " + q + " " + orden + " LIMIT "+limite+";");
+            rs = leer.executeQuery("SELECT " + p + " FROM " + tabla + " order by " + q + " " + orden + " LIMIT " + limite + ";");
 
             while (rs.next()) {
                 //modificar segun la cantidad de campos que se necesite
-                dato = rs.getString(1)+ "   " + rs.getString(2);
+                dato = rs.getString(1) + "   " + rs.getString(2);
                 modelo.addElement(dato);
             }
             lista.setModel(modelo);
@@ -266,9 +266,9 @@ public class Conexion {
             System.out.println("Error = " + ex);
         }
     }
-    
+
     //Metodo para encontrar los registros que tengan algo en comun
-    public void obtenerFilas (String campoAobtener, JList lista, String tabla,String campoAcomparar, String similitud){
+    public void obtenerFilas(String campoAobtener, JList lista, String tabla, String campoAcomparar, String similitud) {
         //p selecciona los campos que se quiere obtener (no funciona con *)
         String dato;
         DefaultListModel<String> modelo = new DefaultListModel<>();
@@ -276,7 +276,7 @@ public class Conexion {
         try {
 
             Statement leer = cx.createStatement();
-            rs = leer.executeQuery("SELECT "+campoAobtener+ " FROM " + tabla + " WHERE " + campoAcomparar+" = "+ similitud+ ";");
+            rs = leer.executeQuery("SELECT " + campoAobtener + " FROM " + tabla + " WHERE " + campoAcomparar + " = " + similitud + ";");
 
             while (rs.next()) {
                 //Modificar segun la cantidad de campos que tenga su tabla
@@ -289,8 +289,9 @@ public class Conexion {
             System.out.println("Error = " + ex);
         }
     }
+
     //Metodo para encontrar los registros con la condicion que se de >, <, =
-    public void obtenerFilas (String campoAobtener, JList lista, String tabla,String campoAcomparar, String condicion, int similitud ){
+    public void obtenerFilas(String campoAobtener, JList lista, String tabla, String campoAcomparar, String condicion, int similitud) {
         //p selecciona los campos que se quiere obtener (no funciona con *)
         String dato;
         DefaultListModel<String> modelo = new DefaultListModel<>();
@@ -298,11 +299,11 @@ public class Conexion {
         try {
 
             Statement leer = cx.createStatement();
-            rs = leer.executeQuery("SELECT "+campoAobtener+ " FROM " + tabla + " WHERE " + campoAcomparar+" "+ condicion+" "+ similitud+ ";");
+            rs = leer.executeQuery("SELECT " + campoAobtener + " FROM " + tabla + " WHERE " + campoAcomparar + " " + condicion + " " + similitud + ";");
 
             while (rs.next()) {
                 //Modificar segun la necesidad
-                dato = rs.getString(1) ;
+                dato = rs.getString(1);
                 modelo.addElement(dato);
             }
             lista.setModel(modelo);
@@ -311,5 +312,76 @@ public class Conexion {
             System.out.println("Error = " + ex);
         }
     }
+
+    //Metodo para encontrar los registros dentro de un rango
+    public void obtenerFilas(String campoAobtener, JList lista, String tabla, String campoAcomparar, int min, int max) {
+        //p selecciona los campos que se quiere obtener (no funciona con *)
+        String dato;
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+
+        try {
+
+            Statement leer = cx.createStatement();
+            rs = leer.executeQuery("SELECT " + campoAobtener + " FROM " + tabla + " WHERE " + campoAcomparar + " BETWEEN " + min + " AND "+ max + ";");
+
+            while (rs.next()) {
+                //Modificar segun la necesidad
+                dato = rs.getString(1)+ "   " +rs.getString(2) + "  " + rs.getString(3) + "   " + rs.getString(4);
+                modelo.addElement(dato);
+            }
+            lista.setModel(modelo);
+
+        } catch (SQLException ex) {
+            System.out.println("Error = " + ex);
+        }
+    }
+    
+        //Metodo para encontrar los registros con 2 condiciones diferentes
+    public void obtenerFilas(String campoAobtener, JList lista, String tabla, String campoAcomparar,String condicion, int valor1, String CampoAcomparar2,String condicion2, int valor2) {
+        //p selecciona los campos que se quiere obtener (no funciona con *)
+        String dato;
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+
+        try {
+
+            Statement leer = cx.createStatement();
+            rs = leer.executeQuery("SELECT " + campoAobtener + " FROM " + tabla + " WHERE " + campoAcomparar + " " +condicion + " " + valor1 + " AND "+ CampoAcomparar2 + condicion2 +valor2 + ";");
+
+            while (rs.next()) {
+                //Modificar segun la necesidad
+                dato = rs.getString(1)+ "   " +rs.getString(2) + "  " + rs.getString(3) + "   " + rs.getString(4);
+                modelo.addElement(dato);
+            }
+            lista.setModel(modelo);
+
+        } catch (SQLException ex) {
+            System.out.println("Error = " + ex);
+        }
+    }
+    
+       //Metodo para encontrar los registros con la condicion que se de >, <, =
+    public void obtenerFilas(String campoAobtener, JList lista, String tabla, String campoAcomparar, String condicion, int similitud1, int similitud2, int similitud3) {
+        //p selecciona los campos que se quiere obtener (no funciona con *)
+        String dato;
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+
+        try {
+
+            Statement leer = cx.createStatement();
+            rs = leer.executeQuery("SELECT " + campoAobtener + " FROM " + tabla + " WHERE " + campoAcomparar + " " + condicion + " " + similitud1 +" OR "+campoAcomparar
+                    +condicion+similitud2+" OR "+campoAcomparar+condicion+similitud3+ ";");
+
+            while (rs.next()) {
+                //Modificar segun la necesidad
+                dato = rs.getString(1)+ "   " +rs.getString(2) + "  " + rs.getString(3) + "   " + rs.getString(4);
+                modelo.addElement(dato);
+            }
+            lista.setModel(modelo);
+
+        } catch (SQLException ex) {
+            System.out.println("Error = " + ex);
+        }
+    }
+    
     
 }
